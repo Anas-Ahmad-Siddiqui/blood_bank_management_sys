@@ -1,0 +1,41 @@
+CREATE OR REPLACE PROCEDURE INSERTuser (
+id USER_.user_id%TYPE ,
+f_name USER_.f_name%TYPE ,
+l_name USER_.l_name%TYPE ,
+mobile USER_.mobile%TYPE ,
+e_mail USER_.e_mail%TYPE )
+IS
+BEGIN
+INSERT INTO USER_ (user_id, f_name, l_name, mobile, e_mail)
+VALUES (id, f_name, l_name, mobile, e_mail);
+commit;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE INSERTlogin (
+id login.login_id%TYPE ,
+username login.login_username%TYPE ,
+password login.login_password%TYPE )
+IS
+BEGIN
+INSERT INTO login (login_id, login_username, login_password)
+VALUES (id, username, password) ;
+commit ;
+END ;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE INSERTroles (
+id roles.role_id%TYPE ,
+name roles.role_name%TYPE ,
+description roles.role_desc%TYPE )
+IS
+BEGIN
+INSERT INTO roles (role_id, role_name, role_desc)
+VALUES (id, name, description) ;
+commit ;
+END ;
+/
