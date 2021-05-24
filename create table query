@@ -1,0 +1,170 @@
+CREATE TABLE user_ (
+user_id NUMBER PRIMARY KEY,
+f_name VARCHAR(15) NOT NULL,
+L_NAME VARCHAR(15) NOT NULL,
+mobile NUMBER(12),
+e_mail VARCHAR(20) NOT NULL);
+
+Table created.
+
+
+
+CREATE TABLE login (
+login_id NUMBER PRIMARY KEY,
+login_username VARCHAR(15) NOT NULL,
+login_password VARCHAR(15) NOT NULL);
+
+Table created.
+
+
+
+CREATE TABLE roles (
+role_id NUMBER PRIMARY KEY,
+role_name VARCHAR(15) NOT NULL,
+role_desc VARCHAR(40) );
+
+Table created.
+
+
+
+CREATE TABLE permissions (
+p_id NUMBER PRIMARY KEY,
+p_name VARCHAR(15) NOT NULL,
+p_desc VARCHAR(40) );
+
+Table created.
+
+
+
+CREATE TABLE blood_bank (
+b_no NUMBER PRIMARY KEY,
+name VARCHAR(15) NOT NULL,
+location VARCHAR(30) NOT NULL );
+
+Table created.
+
+
+
+CREATE TABLE donor (
+d_id NUMBER PRIMARY KEY,
+f_name VARCHAR(15) NOT NULL,
+l_name VARCHAR(15) NOT NULL,
+address VARCHAR(30) NOT NULL,
+mobile NUMBER(12) not NULL,
+doj DATE );
+
+Table created.
+
+
+
+
+CREATE TABLE blood (
+b_id NUMBER PRIMARY KEY,
+b_group VARCHAR(10) NOT NULL,
+b_desc VARCHAR(30),
+b_stk NUMBER NOT NULL );
+
+Table created.
+
+
+
+CREATE TABLE hospitals (
+h_id NUMBER PRIMARY KEY,
+name VARCHAR(15) NOT NULL,
+e_mail VARCHAR(20) NOT NULL,
+mobile NUMBER(12) NOT NULL );
+
+Table created.
+
+
+
+
+CREATE TABLE patients (
+p_id NUMBER PRIMARY KEY,
+p_name VARCHAR(20) NOT NULL,
+p_requirement VARCHAR(20) NOT NULL );
+
+
+
+
+CREATE TABLE user_has_login (
+user_id NUMBER,
+login_id NUMBER,
+CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES user_ (user_id),
+CONSTRAINT fk_login_id FOREIGN KEY(login_id) REFERENCES login(login_id));
+
+Table created.
+
+
+
+CREATE TABLE hospital_orders (
+h_id NUMBER,
+b_no NUMBER,
+CONSTRAINT fk_h_id FOREIGN KEY(h_id) REFERENCES hospitals(h_id),
+CONSTRAINT fk_b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
+
+
+SQL> CREATE TABLE donor_registers (
+  2  d_id NUMBER,
+  3  b_no NUMBER,
+  4  CONSTRAINT fk_d_id FOREIGN KEY(d_id) REFERENCES donor(d_id),
+  5  CONSTRAINT fk__b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
+
+Table created.
+
+
+
+SQL> CREATE TABLE roles_have (
+  2  role_id NUMBER,
+  3  p_id NUMBER,
+  4  CONSTRAINT fk_role_id FOREIGN KEY(role_id) REFERENCES roles(role_id),
+  5  CONSTRAINT fk_p_id FOREIGN KEY(p_id) REFERENCES permissions(p_id) );
+
+Table created.
+
+
+
+CREATE TABLE bank_stores_blood (
+b_no NUMBER,
+b_id NUMBER,
+CONSTRAINT fk_bsb_id FOREIGN KEY(b_no) REFERENCES blood_bank(b_no),
+CONSTRAINT fk__b_id FOREIGN KEY(b_id) REFERENCES blood(b_id) );
+
+Table created.
+
+
+
+CREATE TABLE patients_requests (
+p_id NUMBER,
+b_no NUMBER,
+CONSTRAINT fk_pr_p_id FOREIGN KEY(p_id) REFERENCES patients(p_id),
+ONSTRAINT fk_pr_b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
+
+Table created.
+
+
+
+CREATE TABLE user_is_given_role (
+user_id NUMBER,
+role_id NUMBER,
+CONSTRAINT fk_uigr_user_id FOREIGN KEY(user_id) REFERENCES user_ (user_id),
+CONSTRAINT fk_uigr_role_id FOREIGN KEY(role_id) REFERENCES roles(role_id) );
+
+Table created.
+
+
+
+CREATE TABLE user_manages (
+user_id NUMBER,
+b_no NUMBER,
+CONSTRAINT fk_um_user_id FOREIGN KEY(user_id) REFERENCES user_ (user_id),
+CONSTRAINT fk_um_b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
+
+
+
+
+CREATE TABLE donor_donates_blood (
+d_id NUMBER,
+b_id NUMBER,
+CONSTRAINT fk_ddb_d_id FOREIGN KEY(d_id) REFERENCES donor(d_id),
+CONSTRAINT fk_ddb_b_id FOREIGN KEY(b_id) REFERENCES blood(b_id) );
