@@ -39,3 +39,95 @@ VALUES (id, name, description) ;
 commit ;
 END ;
 /
+
+
+
+CREATE OR REPLACE PROCEDURE INSERTpermissions (
+id permissions.p_id%TYPE ,
+name permissions.p_name%TYPE ,
+description permissions.p_desc%TYPE )
+IS
+BEGIN
+INSERT INTO permissions (p_id, p_name, p_desc)
+VALUES (id, name, description) ;
+commit ;
+END ;
+/
+ 
+ 
+ 
+ CREATE OR REPLACE PROCEDURE INSERTblood_bank (
+ no blood_bank.b_no%TYPE ,
+ name blood_bank.name%TYPE ,
+ location blood_bank.location%TYPE )
+ IS
+ BEGIN
+ INSERT INTO blood_bank (b_no, name, location)
+ VALUES (no, name, location) ;
+ commit;
+ END ;
+ /
+ 
+ 
+ 
+ 
+ CREATE OR REPLACE PROCEDURE INSERTdonor (
+ id donor.d_id%TYPE ,
+ fname donor.f_name%TYPE ,
+ lname donor.l_name%TYPE ,
+ mobile donor.mobile%TYPE ,
+ address donor.address%TYPE ,
+ doj donor.doj%TYPE )
+ IS
+ BEGIN
+ INSERT INTO donor (d_id, f_name, l_name, mobile, address, doj)
+ VALUES (id, fname, lname, mobile, address, doj) ;
+ commit ;
+ END ;
+ /
+ 
+ 
+ 
+ 
+ CREATE OR REPLACE PROCEDURE INSERTblood (
+ id blood.b_id%TYPE,
+ description blood.b_desc%TYPE ,
+ stk blood.b_stk%TYPE ,
+ grp blood.b_group%TYPE )
+ IS
+ BEGIN
+ INSERT INTO blood (b_id, b_desc, b_stk, b_group)
+ VALUES (id, description, stk, grp);
+ COMMIT;
+ END;
+ /
+
+
+
+
+CREATE OR REPLACE PROCEDURE INSERThospitals (
+id hospitals.h_id%TYPE ,
+name hospitals.name%TYPE ,
+e_mail hospitals.e_mail%TYPE ,
+mobile hospitals.mobile%TYPE )
+IS
+BEGIN
+INSERT INTO hospitals (h_id, name, e_mail, mobile)
+VALUES (id, name, e_mail, mobile);
+commit;
+END ;
+/
+ 
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTpatients (
+id patients.p_id%TYPE ,
+name patients.p_name%TYPE ,
+requ patients.p_requirement%TYPE )
+IS
+BEGIN
+INSERT INTO patients (p_id, p_name,  P_REQUIREMENT)
+VALUES (id, name, requ) ;
+COMMIT ;
+END ;
+/
