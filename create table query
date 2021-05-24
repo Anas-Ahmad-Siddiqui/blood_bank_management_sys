@@ -105,10 +105,10 @@ CONSTRAINT fk_b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
 
 
 SQL> CREATE TABLE donor_registers (
-  2  d_id NUMBER,
-  3  b_no NUMBER,
-  4  CONSTRAINT fk_d_id FOREIGN KEY(d_id) REFERENCES donor(d_id),
-  5  CONSTRAINT fk__b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
+d_id NUMBER,
+b_no NUMBER,
+CONSTRAINT fk_d_id FOREIGN KEY(d_id) REFERENCES donor(d_id),
+CONSTRAINT fk__b_no FOREIGN KEY(b_no) REFERENCES blood_bank(b_no) );
 
 Table created.
 
