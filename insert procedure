@@ -131,3 +131,120 @@ VALUES (id, name, requ) ;
 COMMIT ;
 END ;
 /
+
+
+CREATE OR REPLACE PROCEDURE INSERTuhl (
+user user_has_login.user_id%TYPE ,
+login user_has_login.login_id%TYPE )
+IS
+BEGIN
+INSERT INTO user_has_login (user_id, login_id)
+VALUES (user, login);
+commit ;
+end ;
+/
+ 
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTho (
+h_id hospital_orders.h_id%TYPE ,
+b_no hospital_orders.b_no%TYPE )
+IS
+BEGIN
+INSERT INTO hospital_orders (h_id, b_no)
+VALUES (h_id, b_no);
+commit ;
+END ;
+/
+ 
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTdr (
+d_id donor_registers.d_id%TYPE ,
+b_no donor_registers.b_no%TYPE )
+IS
+BEGIN
+INSERT INTO donor_registers (d_id, b_no)
+VALUES (d_id, b_no);
+commit;
+END;
+/
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTrh (
+role roles_have.role_id%TYPE ,
+per roles_have.p_id%TYPE )
+IS
+BEGIN
+INSERT INTO roles_have (role_id, p_id)
+VALUES (role, per);
+commit ;
+END ;
+/
+ 
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTbsb (
+b_no bank_stores_blood.b_no%TYPE ,
+b_id bank_stores_blood.b_id%TYPE )
+IS
+BEGIN
+INSERT INTO bank_stores_blood (b_no, b_id)
+VALUES (b_no, b_id);
+commit;
+END ;
+/
+ 
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTpr (
+p_id patients_requests.p_id%TYPE ,
+b_no patients_requests.b_no%TYPE )
+IS
+BEGIN
+INSERT INTO patients_requests (p_id, b_no)
+VALUES (p_id, b_no) ;
+commit ;
+END ;
+/
+ 
+ 
+CREATE OR REPLACE PROCEDURE INSERTuigr (
+user user_is_given_role.user_id%TYPE ,
+role user_is_given_role.role_id%TYPE )
+IS
+BEGIN
+INSERT INTO user_is_given_role (user_id, role_id)
+VALUES (user, role);
+commit;
+END ;
+/
+ 
+ 
+ 
+ CREATE OR REPLACE PROCEDURE INSERTum (
+ user user_manages.user_id%TYPE ,
+ b_no user_manages.b_no%TYPE )
+ IS
+ BEGIN
+ INSERT INTO user_manages (user_id, b_no)
+ VALUES (user, b_no);
+ commit ;
+ END ;
+ /
+ 
+ 
+ 
+ CREATE OR REPLACE PROCEDURE INSERTddb (
+  2  d_id donor_donates_blood.d_id%TYPE ,
+  3  b_id donor_donates_blood.b_id%TYPE )
+  4  IS
+  5  BEGIN
+  6  INSERT INTO donor_donates_blood (d_id, b_id)
+  7  VALUES (d_id, b_id);
+  8  commit ;
+  9  END ;
+ 10  /
+ 
+ 
+ 
