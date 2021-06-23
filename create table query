@@ -42,9 +42,6 @@ address VARCHAR(30) NOT NULL,
 mobile NUMBER(12) not NULL,
 doj DATE );
 
-Table created.
-
-
 
 
 CREATE TABLE blood (
