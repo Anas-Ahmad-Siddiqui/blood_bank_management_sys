@@ -1,1 +1,5 @@
 # blood_bank_management_sys
+
+Blood Bank management is the storing and management of all data related to a blood bank. A person sitting on his chair in front of a computer can access all the data related to the blood bank. Unlike traditional data management that is carried out physically with effort of a person to write and read out certain data. The entire project has been developed keeping in view of the distributed client server technology, in mind. The project is to create e-information about the donor and organisation that are related to donating the blood. Through this application details of any person who is interested in donating the blood.
+The project has been planned to be having the view of distributed architecture, with centralised storage of the database. The application for the storage of the data has been planned using the constructs of Oracle sql server and all the user interface have been designed using the HTML, CSS and JavaScript. The database connectivity is planned using the ‘cx_Oracle’ library of flask framework.
+The schema has been normalised up to 3NF to eliminate all the anomalies that may arise due to the database transaction.
